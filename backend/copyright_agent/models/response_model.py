@@ -1,15 +1,12 @@
-from typing import Any
-
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 class CopyrightCheckResponse(BaseModel):
     safe: bool
     risk: str
+    confidence: float
     copyright_status: str
-    top_match: str = ""
+    song_title: str = ""
     artist: str = ""
-    similarity_score: float = 0.0
     recommendation: str
     details: str
-    developer_details: dict[str, Any] | None = Field(default=None)

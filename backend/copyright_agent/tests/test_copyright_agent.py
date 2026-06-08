@@ -1,55 +1,148 @@
-from copyright_agent.agents.phrase_bag_agent import PhraseBagAgent
-from copyright_agent.agents.repetition_agent import RepetitionAgent
-from copyright_agent.agents.similarity_agent import SimilarityAgent
+import pytest
+from pydantic import ValidationError
+
+from copyright_agent.agents.evidence_extractor_agent import EvidenceExtractorAgent
+from copyright_agent.agents.input_analyzer_agent import InputAnalyzerAgent
+from copyright_agent.agents.public_domain_agent import PublicDomainAgent
+from copyright_agent.agents.risk_scorer_agent import RiskScorerAgent
+from copyright_agent.agents.search_agent import SearchAgent
 from copyright_agent.main import check_copyright
 from copyright_agent.models.request_model import CopyrightCheckRequest
-from copyright_agent.services.preprocessing import preprocess_lyrics
+from copyright_agent.services.gemini_service import GeminiService
 
 
-def test_preprocessing_lowercases_removes_punctuation_and_tokenizes():
-    result = preprocess_lyrics("Hello,   WORLD!\nAgain.")
-
-    assert result.cleaned == "hello world again"
-    assert result.tokens == ["hello", "world", "again"]
+class FailingProvider:
+    def search(self, query):
+        raise RuntimeError("provider unavailable")
 
 
-def test_phrase_bag_agent_matches_known_phrase():
-    result = PhraseBagAgent().run("A small song says happy birthday to you tonight")
-
-    assert result == {"matched": True, "phrase": "happy birthday to you"}
-
-
-def test_repetition_agent_flags_repeated_words():
-    result = RepetitionAgent(threshold=0.25).run("love love love love tonight")
-
-    assert result["is_repetitive"] is True
-    assert result["repetition_score"] >= 0.25
+class WorkingProvider:
+    def search(self, query):
+        return [
+            {
+                "title": "Never Gonna Give You Up lyrics - Rick Astley",
+                "snippet": "Never gonna give you up appears in Never Gonna Give You Up by Rick Astley.",
+                "url": "https://example.test/song",
+            }
+        ]
 
 
-def test_similarity_agent_returns_top_matches():
-    import pytest
+def test_input_analyzer_classifies_short_inputs():
+    agent = InputAnalyzerAgent()
 
-    pytest.importorskip("rapidfuzz")
-
-    result = SimilarityAgent(top_k=5).run("jingle bells jingle bells jingle all the way")
-
-    assert len(result["matches"]) <= 5
-    assert result["matches"][0]["title"] == "Jingle Bells"
-    assert result["matches"][0]["score"] >= 80
+    assert agent.run("hello")["type"] == "title_or_phrase"
+    assert agent.run("through the darkness I found my light")["type"] == "short_lyric"
+    assert agent.run("one two three four five six seven eight nine ten eleven")["type"] == "verse"
 
 
-def test_pipeline_executes_all_stages_without_external_services():
+def test_public_domain_agent_matches_known_song_phrase():
+    result = PublicDomainAgent().run("happy birthday to you jake")
+
+    assert result["is_public_domain"] is True
+    assert result["song_title"] == "Happy Birthday To You"
+    assert result["artist"] == "Traditional"
+
+
+def test_search_agent_falls_back_to_next_provider():
+    agent = SearchAgent(
+        providers={
+            "brave": FailingProvider(),
+            "serper": WorkingProvider(),
+            "tavily": FailingProvider(),
+        }
+    )
+
+    results = agent.run("never gonna give you up")
+
+    assert results
+    assert results[0]["title"].startswith("Never Gonna Give You Up")
+
+
+def test_evidence_extractor_summarizes_structured_evidence():
+    results = [
+        {
+            "title": "Never Gonna Give You Up lyrics - Rick Astley",
+            "snippet": "Never gonna give you up appears in Never Gonna Give You Up by Rick Astley.",
+            "url": "https://example.test/one",
+        },
+        {
+            "title": "Never Gonna Give You Up song - Rick Astley",
+            "snippet": "A result about the same song.",
+            "url": "https://example.test/two",
+        },
+    ]
+
+    evidence = EvidenceExtractorAgent().run(results)
+
+    assert evidence["song_title"] == "Never Gonna Give You Up"
+    assert evidence["artist"] == "Rick Astley"
+    assert evidence["sources_found"] == 2
+    assert evidence["confidence"] > 0.75
+
+
+def test_gemini_parser_repairs_json_wrapped_in_text():
+    parsed = GeminiService().parse_json(
+        'Here is the answer: {"supports_existing_song": true, "confidence": 0.91, "reason": "match"}'
+    )
+
+    assert parsed["supports_existing_song"] is True
+    assert parsed["confidence"] == 0.91
+
+
+def test_risk_scorer_uses_requested_rules():
+    scorer = RiskScorerAgent()
+
+    high = scorer.run(
+        {"is_public_domain": False},
+        {"confidence": 0.97},
+        {"supports_existing_song": True, "confidence": 0.91},
+    )
+    public_domain = scorer.run(
+        {"is_public_domain": True},
+        {"confidence": 0.99},
+        {"supports_existing_song": True, "confidence": 0.99},
+    )
+
+    assert high["risk"] == "High"
+    assert high["safe"] is False
+    assert public_domain["risk"] == "None"
+    assert public_domain["safe"] is True
+
+
+def test_original_lyrics_return_safe_unknown_status():
+    response = check_copyright(
+        CopyrightCheckRequest(lyrics="through the darkness I found my light")
+    )
+
+    assert response.safe is True
+    assert response.risk == "None"
+    assert response.copyright_status == "Unknown"
+    assert response.song_title == ""
+
+
+def test_known_song_returns_high_risk():
     response = check_copyright(
         CopyrightCheckRequest(
-            lyrics="twinkle twinkle little star how I wonder what you are",
-            debug=True,
+            lyrics="never gonna give you up never gonna let you down"
         )
     )
 
-    assert response.risk in {"None", "Low", "Medium", "High"}
-    assert response.developer_details is not None
-    assert "phrase_bag" in response.developer_details
-    assert "repetition" in response.developer_details
-    assert "similarity" in response.developer_details
-    assert "vector_search" in response.developer_details
-    assert "llm_judge" in response.developer_details
+    assert response.safe is False
+    assert response.risk == "High"
+    assert response.copyright_status == "Protected"
+    assert response.song_title == "Never Gonna Give You Up"
+    assert response.artist == "Rick Astley"
+
+
+def test_empty_lyrics_are_rejected():
+    with pytest.raises(ValidationError):
+        CopyrightCheckRequest(lyrics="")
+
+
+def test_public_domain_song_returns_no_risk():
+    response = check_copyright(CopyrightCheckRequest(lyrics="happy birthday to you jake"))
+
+    assert response.safe is True
+    assert response.risk == "None"
+    assert response.copyright_status == "Public Domain"
+    assert response.song_title == "Happy Birthday To You"
