@@ -1,3 +1,6 @@
+# This file is responsible for lyrics preprocessing ko handle karne ke liye.
+# Yahan raw lyrics ko cleaned text aur tokens mein organize kiya jata hai.
+
 from dataclasses import dataclass
 
 from ..utils.text_cleaner import clean_text, cleanup_whitespace, tokenize

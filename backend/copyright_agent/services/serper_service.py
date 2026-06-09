@@ -1,3 +1,6 @@
+# This file is responsible for Serper search integration ko handle karne ke liye.
+# Yahan API request aur normalized organic results manage kiye jate hain.
+
 import json
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen

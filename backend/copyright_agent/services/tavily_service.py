@@ -1,3 +1,6 @@
+# This file is responsible for Tavily search integration ko handle karne ke liye.
+# Yahan search payload, API call aur result normalization manage kiya jata hai.
+
 import json
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen

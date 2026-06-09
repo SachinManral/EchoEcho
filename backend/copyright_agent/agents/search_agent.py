@@ -1,3 +1,6 @@
+# This file is responsible for lyric search workflow ko coordinate karne ke liye.
+# Yahan external providers aur local reference results ko collect aur dedupe kiya jata hai.
+
 import json
 
 from ..config import config

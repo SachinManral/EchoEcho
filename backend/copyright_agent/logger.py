@@ -1,3 +1,6 @@
+# This file is responsible for shared logging setup ko handle karne ke liye.
+# Yahan se application logs ka format, level aur logger reuse manage kiya jata hai.
+
 import logging
 
 from .config import config

@@ -1,3 +1,6 @@
+# This file is responsible for Gemini model integration ko handle karne ke liye.
+# Yahan LLM judgement request, response parsing aur fallback behavior manage kiya jata hai.
+
 import json
 import time
 from typing import Any

@@ -1,3 +1,6 @@
+# This file is responsible for LLM-based evidence interpretation ko handle karne ke liye.
+# Yahan Gemini judgement aur structured evidence support ka coordination manage kiya jata hai.
+
 from ..config import config
 from ..services.gemini_service import GeminiService
 

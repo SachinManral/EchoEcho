@@ -1,3 +1,6 @@
+# This file is responsible for copyright check response schema define karne ke liye.
+# Yahan API output fields aur advisory result structure manage kiya jata hai.
+
 from pydantic import BaseModel
 
 

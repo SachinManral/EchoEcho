@@ -1,3 +1,6 @@
+# This file is responsible for incoming lyrics input ko classify karne ke liye.
+# Yahan phrase, short lyric aur verse type ka lightweight analysis manage kiya jata hai.
+
 from ..config import config
 from ..services.preprocessing import PreprocessedLyrics, preprocess_lyrics
 

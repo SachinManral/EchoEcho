@@ -1,3 +1,6 @@
+# This file is responsible for copyright risk scoring ko handle karne ke liye.
+# Yahan public-domain, evidence aur LLM signals se final safety decision manage kiya jata hai.
+
 from ..config import config
 
 

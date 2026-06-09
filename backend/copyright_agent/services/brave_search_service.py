@@ -1,3 +1,6 @@
+# This file is responsible for Brave web search integration ko handle karne ke liye.
+# Yahan query execution aur normalized search results manage kiye jate hain.
+
 import json
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode

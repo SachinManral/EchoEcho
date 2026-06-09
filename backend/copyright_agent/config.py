@@ -1,3 +1,7 @@
+# This file is responsible for application configuration ko centralize karne ke liye.
+# Yahan environment variables, service settings aur scoring thresholds manage kiye jate hain.
+# Main purpose is runtime behavior ko consistent aur configurable rakhna.
+
 import os
 from dataclasses import dataclass
 from pathlib import Path
