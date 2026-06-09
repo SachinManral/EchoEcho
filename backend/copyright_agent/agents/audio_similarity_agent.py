@@ -1,3 +1,6 @@
+# This file is reserved for audio similarity analysis support karne ke liye.
+# Yahan future fingerprinting, melody comparison aur acoustic matching plan organize kiya gaya hai.
+
 # Future audio similarity agent.
 
 # This is intentionally comments-only.

@@ -1,3 +1,7 @@
+# This file is responsible for search evidence ko structured summary mein convert karne ke liye.
+# Yahan song title, artist aur confidence signals manage kiye jate hain.
+# Main purpose is raw search results ko scoring-ready evidence mein organize karna.
+
 import re
 from collections import Counter
 

@@ -1,3 +1,6 @@
+# This file is responsible for text cleanup utilities ko handle karne ke liye.
+# Yahan lowercase, punctuation removal, whitespace cleanup aur tokenization manage kiya jata hai.
+
 import re
 import string
 

@@ -1,3 +1,6 @@
+# This file is responsible for public-domain lyrics checks ko handle karne ke liye.
+# Yahan known songs, common phrases aur public-domain matching manage kiya jata hai.
+
 import json
 from pathlib import Path
 

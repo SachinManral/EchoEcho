@@ -1,3 +1,7 @@
+# This file is responsible for FastAPI copyright check flow ko handle karne ke liye.
+# Yahan request pipeline, agent orchestration aur final API response manage kiya jata hai.
+# Main purpose is lyrics safety workflow ko single backend entrypoint se organize karna.
+
 from fastapi import FastAPI
 
 from .config import config
