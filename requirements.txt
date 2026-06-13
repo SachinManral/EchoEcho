@@ -12,3 +12,4 @@ scipy
 pytest==8.3.4
 crewai
 google-search-results
+fpdf2

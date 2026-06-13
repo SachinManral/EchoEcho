@@ -15,8 +15,9 @@ from typing import Any
 import httpx
 from dotenv import load_dotenv
 
-
-PROJECT_DIR = Path(__file__).resolve().parents[1]
+BACKEND_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = BACKEND_DIR.parent
+load_dotenv(BACKEND_DIR / ".env", override=True)
 load_dotenv(PROJECT_DIR / ".env")
 
 logger = logging.getLogger(__name__)
@@ -35,14 +36,11 @@ FAILED_STATUSES = {
 }
 DEFAULT_CALLBACK_PATH = "/api/kieai/callback"
 
-
 class KieAIConfigError(RuntimeError):
     pass
 
-
 class KieAIResponseError(RuntimeError):
     pass
-
 
 @dataclass
 class GenerationInput:

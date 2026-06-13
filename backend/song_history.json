@@ -1,158 +1,33 @@
 [
   {
-    "mode": "api",
-    "code": "LSVH",
-    "song_id": "LSVH",
-    "task_id": "ea490e66cc7654b2b059b3048cfb296a",
-    "created_at": "2026-06-09T15:14:14.058387+00:00",
-    "mood": "Romantic",
-    "theme": "Rain",
+    "mode": "musicgen",
+    "code": "APYC",
+    "song_id": "APYC",
+    "created_at": "2026-06-11T13:08:51.549301+00:00",
+    "prompt": "30-second instrumental inspiration sketch. gentle optimism, tender warmth, forward-looking emotion and soft-focus, floating, hazy, dreamlike mood. lo-fi style. Theme: sentimental atmosphere, emotional recollections, longing, dreamy mood. piano, bass, drums, saxophone and choir pads ensemble only. Only these instruments: piano, bass, drums, saxophone and choir pads. No hidden accompaniment. No acoustic guitar. No electric guitar. No guitar. No violin. No strings. No synthesizers. No flute. No brass. Instrumental only. No vocals. No lyrics. Tempo 90 BPM. Moderate complexity. Energy level 4. Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
+    "mood": "Hopeful + Dreamy",
+    "theme": "Memories",
     "style": "Lo-fi",
     "instruments": [
       "Piano",
-      "Guitar"
+      "Bass",
+      "Drums",
+      "Saxophone",
+      "Choir Pads"
     ],
     "tempo": 90,
-    "energy": 2,
-    "prompt": "Create a 30 second instrumental songwriting inspiration sketch. Mood: Romantic. Theme: Rain. Style: Lo-fi. Instruments: Piano, Guitar. Tempo: 90 BPM. Energy: 2/10. Keep it memorable, compact, melodic, and emotionally clear.",
-    "original_audio_filename": "ECHO_LSVH_original.mp3",
-    "trimmed_audio_filename": null
-  },
-  {
-    "mode": "musicgen",
-    "code": "ZDFC",
-    "song_id": "ZDFC",
-    "created_at": "2026-06-09T13:37:48.712274+00:00",
-    "prompt": "30-second instrumental inspiration sketch. melancholic, emotional, reflective, lonely and warm, intimate, nostalgic mood. lo-fi style. Theme: sentimental atmosphere, emotional recollections, longing, dreamy mood. Solo flute performance. Solo flute only. Only flute. No accompanying instruments. No piano. No acoustic guitar. No electric guitar. No guitar. No violin. No strings. No bass. No drums. No synthesizers. No saxophone. No choir pads. No brass. No percussion. Instrumental only. No vocals. No lyrics. Tempo 100 BPM. Moderate complexity. Energy level 3. Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
-    "mood": "Sad + Romantic",
-    "theme": "Love + Memories",
-    "style": "Lo-fi",
-    "instruments": [
-      "Flute"
-    ],
-    "tempo": 100,
     "complexity": "Moderate",
     "duration": 30,
-    "energy": 3,
-    "generation_time_seconds": 373,
-    "generation_time": "6m 13s",
-    "filename": "ZDFC.wav",
-    "audio_filename": "ZDFC.wav",
-    "output_file": "generated/ZDFC.wav",
-    "audio_url": "/generated/ZDFC.wav"
-  },
-  {
-    "code": "QDBH",
-    "song_id": "QDBH",
-    "task_id": "8f35c7e1ef6329aa42d51005a2da05a7",
-    "created_at": "2026-06-10T06:57:44.324062+00:00",
-    "mood": "Sad",
-    "theme": "Love + Memories + Night",
-    "style": "Lo-fi",
-    "instruments": [
-      "Piano",
-      "Bass",
-      "Drums"
-    ],
-    "tempo": 73,
-    "energy": 7,
-    "prompt": "Create a 30 second instrumental songwriting inspiration sketch. Mood: Sad. Theme: Love + Memories + Night. Style: Lo-fi. Instruments: Piano, Bass, Drums. Tempo: 73 BPM. Energy: 7/10. Keep it memorable, compact, melodic, and emotionally clear.",
-    "original_audio_filename": "ECHO_QDBH_original.mp3",
-    "trimmed_audio_filename": null,
-    "mode": "api",
-    "fast": true,
-    "duration": 30,
-    "filename": "ECHO_QDBH_original.mp3",
-    "audio_filename": "ECHO_QDBH_original.mp3",
-    "audio_url": "/generated/ECHO_QDBH_original.mp3"
-  },
-  {
-    "mode": "musicgen",
-    "code": "RGLL",
-    "song_id": "RGLL",
-    "created_at": "2026-06-10T07:06:01.221091+00:00",
-    "prompt": "30-second instrumental inspiration sketch. melancholic, emotional, reflective, lonely mood. lo-fi style. Theme: sentimental atmosphere, emotional recollections, longing, dreamy mood and late-night atmosphere. piano, bass and drums ensemble only. Only these instruments: piano, bass and drums. No hidden accompaniment. No acoustic guitar. No electric guitar. No guitar. No violin. No strings. No synthesizers. No saxophone. No flute. No choir pads. No brass. Instrumental only. No vocals. No lyrics. Tempo 73 BPM. Moderate complexity. Energy level 7. Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
-    "mood": "Sad",
-    "theme": "Love + Memories + Night",
-    "style": "Lo-fi",
-    "instruments": [
-      "Piano",
-      "Bass",
-      "Drums"
-    ],
-    "tempo": 73,
-    "complexity": "Moderate",
-    "duration": 30,
-    "energy": 7,
-    "generation_time_seconds": 218,
-    "generation_time": "3m 38s",
-    "filename": "RGLL.wav",
-    "audio_filename": "RGLL.wav",
-    "output_file": "generated/RGLL.wav",
-    "audio_url": "/generated/RGLL.wav",
-    "inference_seconds": 217.83
-  },
-  {
-    "mode": "musicgen",
-    "code": "KOYO",
-    "song_id": "KOYO",
-    "created_at": "2026-06-10T10:07:52.494326+00:00",
-    "prompt": "30-second instrumental inspiration sketch. dreamy memories, emotional atmosphere and calm, unhurried, easygoing mood. lo-fi and classical style. Theme: soft rainy ambience and sentimental atmosphere, emotional recollections, longing, dreamy mood. violin and flute duet only. Only violin and flute. No hidden accompaniment. No piano. No acoustic guitar. No electric guitar. No guitar. No strings. No bass. No drums. No synthesizers. No saxophone. No choir pads. No brass. No percussion. Instrumental only. No vocals. No lyrics. Tempo 70 BPM. Rich complexity. Energy level 5. Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
-    "mood": "Nostalgic + Relaxed",
-    "theme": "Memories + Rain",
-    "style": "Lo-fi + Classical",
-    "instruments": [
-      "Violin",
-      "Flute"
-    ],
-    "tempo": 70,
-    "complexity": "Rich",
-    "duration": 30,
-    "energy": 5,
-    "generation_time_seconds": 225,
-    "generation_time": "3m 45s",
-    "filename": "KOYO.wav",
-    "audio_filename": "KOYO.wav",
-    "output_file": "generated/KOYO.wav",
-    "audio_url": "/generated/KOYO.wav",
-    "inference_seconds": 224.98,
+    "energy": 4,
+    "generation_time_seconds": 461,
+    "generation_time": "7m 41s",
+    "filename": "APYC.wav",
+    "audio_filename": "APYC.wav",
+    "output_file": "generated/APYC.wav",
+    "audio_url": "/generated/APYC.wav",
+    "inference_seconds": 460.75,
     "lyrics": {
-      "text": "Lyrics generation is unavailable for this song, but the music was generated successfully. Reason: CrewAI is not installed.",
-      "structure": "unavailable"
-    },
-    "copyright": {
-      "status": "unavailable",
-      "similarity_score": null,
-      "notes": "Lyrics generation failed; copyright check was skipped."
-    }
-  },
-  {
-    "mode": "musicgen",
-    "code": "UJQH",
-    "song_id": "UJQH",
-    "created_at": "2026-06-10T10:25:09.227911+00:00",
-    "prompt": "30-second instrumental inspiration sketch. soft-focus, floating, hazy, dreamlike, melancholic, emotional, reflective, lonely and calm, unhurried, easygoing mood. lo-fi style. Theme: soft rainy ambience, organic calm, open air, gentle landscape and sentimental atmosphere, emotional recollections, longing, dreamy mood. piano, acoustic guitar and saxophone ensemble only. Only these instruments: piano, acoustic guitar and saxophone. No hidden accompaniment. No electric guitar. No violin. No strings. No bass. No drums. No synthesizers. No flute. No choir pads. No brass. No percussion. Instrumental only. No vocals. No lyrics. Tempo 70 BPM. Moderate complexity. Energy level 6. Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
-    "mood": "Dreamy + Sad + Relaxed",
-    "theme": "Memories + Rain + Nature",
-    "style": "Lo-fi",
-    "instruments": [
-      "Piano",
-      "Acoustic Guitar",
-      "Saxophone"
-    ],
-    "tempo": 70,
-    "complexity": "Moderate",
-    "duration": 30,
-    "energy": 6,
-    "generation_time_seconds": 265,
-    "generation_time": "4m 25s",
-    "filename": "UJQH.wav",
-    "audio_filename": "UJQH.wav",
-    "output_file": "generated/UJQH.wav",
-    "audio_url": "/generated/UJQH.wav",
-    "inference_seconds": 265.15,
-    "lyrics": {
-      "text": "Lyrics generation is unavailable for this song, but the music was generated successfully. Reason: CrewAI is not installed.",
+      "text": "Lyrics generation is unavailable for this song, but the music was generated successfully. Reason: No module named 'fpdf'",
       "structure": "unavailable"
     },
     "copyright": {
@@ -160,6 +35,701 @@
       "similarity_score": null,
       "notes": "Lyrics generation failed; copyright check was skipped.",
       "matches": []
+    }
+  },
+  {
+    "mode": "musicgen",
+    "code": "BQKM",
+    "song_id": "BQKM",
+    "created_at": "2026-06-11T14:02:36.060975+00:00",
+    "prompt": "30-second instrumental inspiration sketch. gentle optimism, tender warmth, forward-looking emotion and soft-focus, floating, hazy, dreamlike mood. lo-fi style. Theme: sentimental atmosphere, emotional recollections, longing, dreamy mood. piano, bass and drums ensemble only. Only these instruments: piano, bass and drums. No hidden accompaniment. No acoustic guitar. No electric guitar. No guitar. No violin. No strings. No synthesizers. No saxophone. No flute. No choir pads. No brass. Instrumental only. No vocals. No lyrics. Tempo 90 BPM. Moderate complexity. Energy level 4. Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
+    "mood": "Hopeful + Dreamy",
+    "theme": "Memories",
+    "style": "Lo-fi",
+    "instruments": [
+      "Piano",
+      "Bass",
+      "Drums"
+    ],
+    "tempo": 90,
+    "complexity": "Moderate",
+    "duration": 30,
+    "energy": 4,
+    "generation_time_seconds": 372,
+    "generation_time": "6m 12s",
+    "filename": "BQKM.wav",
+    "audio_filename": "BQKM.wav",
+    "output_file": "generated/BQKM.wav",
+    "audio_url": "/generated/BQKM.wav",
+    "inference_seconds": 372.0,
+    "lyrics": {
+      "text": "[Verse 1]\nIn the haze of yesterday's light\nI find my way through the fading night\nWhispers of you, like a summer breeze\nEchoes of laughter, wild and free\n\n[Chorus]\nOh, the memories we've yet to make\nFloating like leaves on a winding lake\nWe'll chase the sun and dance in the rain\nAnd our love will bloom like a garden's refrain\n\n[Verse 2]\nIn the silence, I hear your voice\nA gentle hum, a heartfelt choice\nTo hold on tight, to never let go\nAnd in your eyes, my heart finds home\n\n[Chorus]\nOh, the memories we've yet to make\nFloating like leaves on a winding lake\nWe'll chase the sun and dance in the rain\nAnd our love will bloom like a garden's refrain",
+      "structure": "verse/chorus",
+      "lyrics_pdf": "E:\\EchoEcho\\backend\\generated\\lyrics\\Memories_f94caca0.pdf",
+      "lyrics_pdf_url": "/generated/lyrics/Memories_f94caca0.pdf"
+    },
+    "copyright": {
+      "status": "safe",
+      "similarity_score": 0.91,
+      "notes": "Appears original.",
+      "matches": [],
+      "risk": "None",
+      "copyright_status": "Unknown",
+      "song_title": "",
+      "artist": "",
+      "details": "No strong evidence of existing lyrics."
+    }
+  },
+  {
+    "mode": "musicgen",
+    "code": "AYVH",
+    "song_id": "AYVH",
+    "created_at": "2026-06-11T14:38:21.602083+00:00",
+    "prompt": "30-second instrumental inspiration sketch. melancholic, emotional, reflective, lonely mood. rock and edm style. Theme: sentimental atmosphere, emotional recollections, longing, dreamy mood and soft rainy ambience. electric guitar and strings duet only. Only electric guitar and strings. No hidden accompaniment. No piano. No acoustic guitar. No violin. No bass. No drums. No synthesizers. No saxophone. No flute. No choir pads. No brass. No percussion. Instrumental only. No vocals. No lyrics. Tempo 107 BPM. Simple complexity. Energy level 4. Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
+    "mood": "Sad",
+    "theme": "Rainy Day + Love",
+    "style": "Rock + EDM",
+    "instruments": [
+      "Electric Guitar",
+      "Strings"
+    ],
+    "tempo": 107,
+    "complexity": "Simple",
+    "duration": 30,
+    "energy": 4,
+    "generation_time_seconds": 502,
+    "generation_time": "8m 22s",
+    "filename": "AYVH.wav",
+    "audio_filename": "AYVH.wav",
+    "output_file": "generated/AYVH.wav",
+    "audio_url": "/generated/AYVH.wav",
+    "inference_seconds": 501.72,
+    "music_sheet": {
+      "summary": "Title: AYVH\nKey: Bm    Time: 4/4    Tempo: 107 BPM\nStyle: Rock + EDM    Mood: Sad\nInstruments: Electric Guitar, Strings\nChord sketch: Dm | Bb | F | C\nNotation: lead melody staff with chord symbols for musician reference.",
+      "music_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\music_sheets\\AYVH_3fa9c624.pdf",
+      "music_sheet_pdf_url": "/generated/music_sheets/AYVH_3fa9c624.pdf"
+    },
+    "chord_sheet": {
+      "summary": "Title: AYVH\nTempo: 107 BPM    Style: Rock + EDM    Mood: Sad\nChord progression: Dm | Bb | F | C\nFormat: beginner guitar chord boxes with suggested progression.",
+      "chord_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\chord_sheets\\AYVH_4d31067d.pdf",
+      "chord_sheet_pdf_url": "/generated/chord_sheets/AYVH_4d31067d.pdf"
+    },
+    "lyrics": {
+      "text": "[Verse 1]\nGrey skies weeping tears for you\nEvery drop a memory we held true\nRainy nights that we'd dance alone\nLeft with echoes, where love used to roam\n\n[Chorus]\nLost in the haze, of your love and mine\nFading away, like the rain's decline\nI'm searching for solace, but it's hard to find\nIn this lonely city, where our hearts left behind\n\n[Verse 2]\nSummer's gone, and so have you\nI'm left with shadows, of the love we once knew\nWhispers of your name, on the wind's gentle sigh\nReminding me, of the love we left to die\n\n[Chorus]\nLost in the haze, of your love and mine\nFading away, like the rain's decline\nI'm searching for solace, but it's hard to find\nIn this lonely city, where our hearts left behind",
+      "structure": "verse/chorus",
+      "lyrics_pdf": "E:\\EchoEcho\\backend\\generated\\lyrics\\Rainy_Day_Love_bfea1bf5.pdf",
+      "lyrics_pdf_url": "/generated/lyrics/Rainy_Day_Love_bfea1bf5.pdf"
+    },
+    "copyright": {
+      "status": "safe",
+      "similarity_score": 0.91,
+      "notes": "Appears original.",
+      "matches": [],
+      "risk": "None",
+      "copyright_status": "Unknown",
+      "song_title": "",
+      "artist": "",
+      "details": "No strong evidence of existing lyrics."
+    }
+  },
+  {
+    "code": "TTOT",
+    "song_id": "TTOT",
+    "task_id": "6ba8700516d4bd3a2cf161ae42e03baf",
+    "created_at": "2026-06-11T16:11:40.169098+00:00",
+    "mood": "Happy + Dreamy + Dark",
+    "theme": "Love + Rain",
+    "style": "Lo-fi",
+    "instruments": [
+      "Piano",
+      "Electric Guitar"
+    ],
+    "tempo": 105,
+    "energy": 4,
+    "prompt": "Create a 30 second instrumental songwriting inspiration sketch. Mood: Happy + Dreamy + Dark. Theme: Love + Rain. Style: Lo-fi. Instruments: Piano, Electric Guitar. Tempo: 105 BPM. Energy: 4/10. Keep it memorable, compact, melodic, and emotionally clear.",
+    "original_audio_filename": "ECHO_TTOT_original.mp3",
+    "trimmed_audio_filename": null,
+    "mode": "api",
+    "fast": true,
+    "duration": 30,
+    "filename": "ECHO_TTOT_original.mp3",
+    "audio_filename": "ECHO_TTOT_original.mp3",
+    "audio_url": "/generated/ECHO_TTOT_original.mp3",
+    "music_sheet": {
+      "summary": "Title: TTOT\nKey: Dm    Time: 4/4    Tempo: 105 BPM\nStyle: Lo-fi    Mood: Happy + Dreamy + Dark\nInstruments: Piano, Electric Guitar\nChord sketch: C | G | Am | F\nNotation: lead melody staff with chord symbols for musician reference.",
+      "music_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\music_sheets\\TTOT_7fb7391a.pdf",
+      "music_sheet_pdf_url": "/generated/music_sheets/TTOT_7fb7391a.pdf"
+    },
+    "chord_sheet": {
+      "summary": "Title: TTOT\nTempo: 105 BPM    Style: Lo-fi    Mood: Happy + Dreamy + Dark\nChord progression: C | G | Am | F\nFormat: beginner guitar chord boxes with suggested progression.",
+      "chord_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\chord_sheets\\TTOT_ed3692cf.pdf",
+      "chord_sheet_pdf_url": "/generated/chord_sheets/TTOT_ed3692cf.pdf"
+    },
+    "lyrics": {
+      "text": "[Verse 1]\nRainy nights, we'd dance and sway\nIn the downpour, our love would play\nA symphony of splashing sound\nOur hearts beating, lost in this town\n\n[Chorus]\nOh, in the rain, I find my way\nTo you, where love stays\nThrough the stormy night, I'll follow the rain\nTo be with you, my heart's refrain\n\n[Verse 2]\nDroplets on our skin, a gentle kiss\nIn the rain-soaked silence, I hear your wish\nA whispered promise, a love so true\nIn the rain, our hearts renew\n\n[Chorus]\nOh, in the rain, I find my way\nTo you, where love stays\nThrough the stormy night, I'll follow the rain\nTo be with you, my heart's refrain",
+      "structure": "verse/chorus",
+      "lyrics_pdf": "E:\\EchoEcho\\backend\\generated\\lyrics\\Love_Rain_49791606.pdf",
+      "lyrics_pdf_url": "/generated/lyrics/Love_Rain_49791606.pdf"
+    },
+    "copyright": {
+      "status": "safe",
+      "similarity_score": 0.91,
+      "notes": "Appears original.",
+      "matches": [],
+      "risk": "None",
+      "copyright_status": "Unknown",
+      "song_title": "",
+      "artist": "",
+      "details": "No strong evidence of existing lyrics."
+    }
+  },
+  {
+    "mode": "musicgen",
+    "code": "QOEM",
+    "song_id": "QOEM",
+    "created_at": "2026-06-11T16:27:25.927396+00:00",
+    "prompt": "30-second instrumental inspiration sketch. soft-focus, floating, hazy, dreamlike and melancholic, emotional, reflective, lonely mood. lo-fi style. Theme: late-night atmosphere and sentimental atmosphere, emotional recollections, longing, dreamy mood. piano, bass and drums ensemble only. Only these instruments: piano, bass and drums. No hidden accompaniment. No acoustic guitar. No electric guitar. No guitar. No violin. No strings. No synthesizers. No saxophone. No flute. No choir pads. No brass. Instrumental only. No vocals. No lyrics. Tempo 90 BPM. Rich complexity. Energy level 4. Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
+    "mood": "Dreamy + Sad",
+    "theme": "Memories + City Night",
+    "style": "Lo-fi",
+    "instruments": [
+      "Piano",
+      "Bass",
+      "Drums"
+    ],
+    "tempo": 90,
+    "complexity": "Rich",
+    "duration": 30,
+    "energy": 4,
+    "generation_time_seconds": 304,
+    "generation_time": "5m 04s",
+    "filename": "QOEM.wav",
+    "audio_filename": "QOEM.wav",
+    "output_file": "generated/QOEM.wav",
+    "audio_url": "/generated/QOEM.wav",
+    "inference_seconds": 304.42,
+    "qa_attempt": 1,
+    "music_sheet": {
+      "summary": "Title: QOEM\nKey: Dm    Time: 4/4    Tempo: 90 BPM\nStyle: Lo-fi    Mood: Dreamy + Sad\nInstruments: Piano, Bass, Drums\nChord sketch: Am | Fmaj7 | C | G\nNotation: lead melody staff with chord symbols for musician reference.",
+      "music_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\music_sheets\\QOEM_004a140e.pdf",
+      "music_sheet_pdf_url": "/generated/music_sheets/QOEM_004a140e.pdf"
+    },
+    "chord_sheet": {
+      "summary": "Title: QOEM\nTempo: 90 BPM    Style: Lo-fi    Mood: Dreamy + Sad\nChord progression: Am | Fmaj7 | C | G\nFormat: beginner guitar chord boxes with suggested progression.",
+      "chord_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\chord_sheets\\QOEM_3a08a8ed.pdf",
+      "chord_sheet_pdf_url": "/generated/chord_sheets/QOEM_3a08a8ed.pdf"
+    },
+    "lyrics": {
+      "text": "[Verse 1]\nIn city streets, I wander alone\nWhere shadows dance, and moonlight's home\nFading streets, a distant hum\nMemories of you, they're never undone\n\n[Chorus]\nOh, city night, you whisper low\nOf love and loss, in the evening's glow\nA lonely heart, it beats for you\nIn this haze, my thoughts are true\n\n[Verse 2]\nIn alleys dark, where stars appear\nA fleeting glimpse, of love and fear\nI search for signs, of what we had found\nBut only echoes, of love left down\n\n[Chorus]\nOh, city night, you whisper low\nOf love and loss, in the evening's glow\nA lonely heart, it beats for you\nIn this haze, my thoughts are true",
+      "structure": "verse/chorus",
+      "lyrics_pdf": "E:\\EchoEcho\\backend\\generated\\lyrics\\Memories_City_Night_00e4f292.pdf",
+      "lyrics_pdf_url": "/generated/lyrics/Memories_City_Night_00e4f292.pdf"
+    },
+    "copyright": {
+      "status": "safe",
+      "similarity_score": 0.91,
+      "notes": "Appears original.",
+      "matches": [],
+      "risk": "None",
+      "copyright_status": "Unknown",
+      "song_title": "",
+      "artist": "",
+      "details": "No strong evidence of existing lyrics."
+    },
+    "quality_judge": {
+      "passed": true,
+      "score": 1.0,
+      "reasons": [
+        "Composition passed quality checks."
+      ],
+      "token_cache_file": "E:\\EchoEcho\\backend\\generated\\qa_tokens\\QOEM_tokens.json"
+    }
+  },
+  {
+    "mode": "musicgen",
+    "code": "SSDJ",
+    "song_id": "SSDJ",
+    "created_at": "2026-06-11T16:40:42.533995+00:00",
+    "prompt": "30-second instrumental inspiration sketch. melancholic, emotional, reflective, lonely and shadowy, tense, brooding mood. classical style. Theme: sorrow, loneliness, melancholy. violin and flute duet only. Only violin and flute. No hidden accompaniment. No piano. No acoustic guitar. No electric guitar. No guitar. No strings. No bass. No drums. No synthesizers. No saxophone. No choir pads. No brass. No percussion. Instrumental only. No vocals. No lyrics. Tempo 90 BPM. Moderate complexity. Energy level 5. Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
+    "mood": "Sad + Dark",
+    "theme": "Heartbreak",
+    "style": "Classical",
+    "instruments": [
+      "Violin",
+      "Flute"
+    ],
+    "tempo": 90,
+    "complexity": "Moderate",
+    "duration": 30,
+    "energy": 5,
+    "generation_time_seconds": 272,
+    "generation_time": "4m 32s",
+    "filename": "SSDJ.wav",
+    "audio_filename": "SSDJ.wav",
+    "output_file": "generated/SSDJ.wav",
+    "audio_url": "/generated/SSDJ.wav",
+    "inference_seconds": 272.23,
+    "qa_attempt": 1,
+    "music_sheet": {
+      "summary": "Title: SSDJ\nKey: Bm    Time: 4/4    Tempo: 90 BPM\nStyle: Classical    Mood: Sad + Dark\nInstruments: Violin, Flute\nChord sketch: Dm | Bb | F | C\nNotation: lead melody staff with chord symbols for musician reference.",
+      "music_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\music_sheets\\SSDJ_7ebd6255.pdf",
+      "music_sheet_pdf_url": "/generated/music_sheets/SSDJ_7ebd6255.pdf"
+    },
+    "chord_sheet": {
+      "summary": "Title: SSDJ\nTempo: 90 BPM    Style: Classical    Mood: Sad + Dark\nChord progression: Dm | Bb | F | C\nFormat: beginner guitar chord boxes with suggested progression.",
+      "chord_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\chord_sheets\\SSDJ_d06fe7ab.pdf",
+      "chord_sheet_pdf_url": "/generated/chord_sheets/SSDJ_d06fe7ab.pdf"
+    },
+    "lyrics": {
+      "text": "[Verse 1]\nIn twilight's hush, where shadows play\nI see your face, and fade away\nThe ache within, a hollowed space\nA love now lost, a distant, fading place\n\n[Chorus]\nOh, the night it weeps, with tears untold\nA lonely heart, where love grows old\nIn darkness deep, I search for light\nA guiding star, to lead me through the night\n\n[Verse 2]\n Memories of you, a haunting refrain\nEchoes of laughter, now in vain\nThe silence screams, a deafening sound\nA solitude, that wraps me 'round\n\n[Chorus]\nOh, the night it weeps, with tears untold\nA lonely heart, where love grows old\nIn darkness deep, I search for light\nA guiding star, to lead me through the night",
+      "structure": "verse/chorus",
+      "lyrics_pdf": "E:\\EchoEcho\\backend\\generated\\lyrics\\Heartbreak_eba2bdf3.pdf",
+      "lyrics_pdf_url": "/generated/lyrics/Heartbreak_eba2bdf3.pdf"
+    },
+    "copyright": {
+      "status": "safe",
+      "similarity_score": 0.91,
+      "notes": "Appears original.",
+      "matches": [],
+      "risk": "None",
+      "copyright_status": "Unknown",
+      "song_title": "",
+      "artist": "",
+      "details": "No strong evidence of existing lyrics."
+    },
+    "quality_judge": {
+      "passed": true,
+      "score": 1.0,
+      "reasons": [
+        "Audio instrument model unavailable; skipped instrument detection: ffmpeg was not found but is required to load audio files from filename"
+      ],
+      "token_cache_file": "E:\\EchoEcho\\backend\\generated\\qa_tokens\\SSDJ_tokens.json"
+    }
+  },
+  {
+    "mode": "musicgen",
+    "code": "ABPG",
+    "song_id": "ABPG",
+    "created_at": "2026-06-11T17:28:48.718546+00:00",
+    "prompt": "30-second instrumental inspiration sketch. soft-focus, floating, hazy, dreamlike and shadowy, tense, brooding mood. pop style. Theme: sentimental atmosphere, emotional recollections, longing, dreamy mood. violin and flute duet only. Only violin and flute. No hidden accompaniment. No piano. No acoustic guitar. No electric guitar. No guitar. No strings. No bass. No drums. No synthesizers. No saxophone. No choir pads. No brass. No percussion. Instrumental only. No vocals. No lyrics. Tempo 111 BPM. Moderate complexity. Energy level 4. Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
+    "mood": "Dreamy + Dark",
+    "theme": "Love + Memories",
+    "style": "Pop",
+    "instruments": [
+      "Violin",
+      "Flute"
+    ],
+    "tempo": 111,
+    "complexity": "Moderate",
+    "duration": 30,
+    "energy": 4,
+    "generation_time_seconds": 1077,
+    "generation_time": "17m 57s",
+    "filename": "ABPG.wav",
+    "audio_filename": "ABPG.wav",
+    "output_file": "generated/ABPG.wav",
+    "audio_url": "/generated/ABPG.wav",
+    "inference_seconds": 363.29,
+    "qa_attempt": 3,
+    "music_sheet": {
+      "summary": "Title: ABPG\nKey: Am    Time: 4/4    Tempo: 111 BPM\nStyle: Pop    Mood: Dreamy + Dark\nInstruments: Violin, Flute\nChord sketch: Am | Fmaj7 | C | G\nNotation: lead melody staff with chord symbols for musician reference.",
+      "music_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\music_sheets\\ABPG_0eb70b16.pdf",
+      "music_sheet_pdf_url": "/generated/music_sheets/ABPG_0eb70b16.pdf"
+    },
+    "chord_sheet": {
+      "summary": "Title: ABPG\nTempo: 111 BPM    Style: Pop    Mood: Dreamy + Dark\nChord progression: Am | Fmaj7 | C | G\nFormat: beginner guitar chord boxes with suggested progression.",
+      "chord_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\chord_sheets\\ABPG_7b60b7aa.pdf",
+      "chord_sheet_pdf_url": "/generated/chord_sheets/ABPG_7b60b7aa.pdf"
+    },
+    "lyrics": {
+      "text": "[Verse 1]\nIn the hollow of my mind, where shadows softly fall\nI find your whispered name, echoing through it all\nA fleeting memory, a glimpse of what we used to be\nA love that's lost in time, yet still I'm searching for thee\n\n[Chorus]\nOh, the ghosts that we've created, in the silence of our past\nFading like the moonlight, forever cast\nIn the darkness, I'm reminded, of the love we had found\nA dream that's lost in time, spinning round and round\n\n[Verse 2]\nMoonlit nights, and whispered secrets, in the silence of our home\nI hear your voice, a haunting melody, forever to roam\nA bittersweet reminder, of the love we used to share\nA love that's lost in time, and yet I still remember we care\n\n[Chorus]\nOh, the ghosts that we've created, in the silence of our past\nFading like the moonlight, forever cast\nIn the darkness, I'm reminded, of the love we had found\nA dream that's lost in time, spinning round and round",
+      "structure": "verse/chorus",
+      "lyrics_pdf": "E:\\EchoEcho\\backend\\generated\\lyrics\\Love_Memories_87fcfb7a.pdf",
+      "lyrics_pdf_url": "/generated/lyrics/Love_Memories_87fcfb7a.pdf"
+    },
+    "copyright": {
+      "status": "safe",
+      "similarity_score": 0.91,
+      "notes": "Appears original.",
+      "matches": [],
+      "risk": "None",
+      "copyright_status": "Unknown",
+      "song_title": "",
+      "artist": "",
+      "details": "No strong evidence of existing lyrics."
+    },
+    "quality_judge": {
+      "passed": true,
+      "score": 0.83,
+      "reasons": [
+        "Audio instrument model unavailable; skipped instrument detection: ffmpeg was not found but is required to load audio files from filename",
+        "Audio expectation model unavailable; skipped semantic check: ffmpeg was not found but is required to load audio files from filename",
+        "Audio tempo, energy, and complexity passed feature checks.",
+        "Selected mood missing from prompt context: dark",
+        "Selected theme missing from prompt context: love",
+        "Selected theme missing from prompt context: memories"
+      ],
+      "token_cache_file": "E:\\EchoEcho\\backend\\generated\\qa_tokens\\ABPG_tokens.json"
+    }
+  },
+  {
+    "code": "HVLC",
+    "song_id": "HVLC",
+    "task_id": "2cf0acd7562a4bbe3248d1a341a7232f",
+    "created_at": "2026-06-11T17:37:37.194876+00:00",
+    "mood": "Hopeful + Dreamy",
+    "theme": "Memories",
+    "style": "Lo-fi",
+    "instruments": [
+      "Piano",
+      "Bass",
+      "Drums"
+    ],
+    "tempo": 90,
+    "energy": 4,
+    "prompt": "Create a 30 second instrumental songwriting inspiration sketch. Mood: Hopeful + Dreamy. Theme: Memories. Style: Lo-fi. Instruments: Piano, Bass, Drums. Tempo: 90 BPM. Energy: 4/10. Keep it memorable, compact, melodic, and emotionally clear.",
+    "original_audio_filename": "ECHO_HVLC_original.mp3",
+    "trimmed_audio_filename": null,
+    "mode": "api",
+    "fast": true,
+    "duration": 30,
+    "filename": "ECHO_HVLC_original.mp3",
+    "audio_filename": "ECHO_HVLC_original.mp3",
+    "audio_url": "/generated/ECHO_HVLC_original.mp3",
+    "music_sheet": {
+      "summary": "Title: HVLC\nKey: C    Time: 4/4    Tempo: 90 BPM\nStyle: Lo-fi    Mood: Hopeful + Dreamy\nInstruments: Piano, Bass, Drums\nChord sketch: C | Em | F | G\nNotation: lead melody staff with chord symbols for musician reference.",
+      "music_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\music_sheets\\HVLC_8f584e08.pdf",
+      "music_sheet_pdf_url": "/generated/music_sheets/HVLC_8f584e08.pdf"
+    },
+    "chord_sheet": {
+      "summary": "Title: HVLC\nTempo: 90 BPM    Style: Lo-fi    Mood: Hopeful + Dreamy\nChord progression: C | Em | F | G\nFormat: beginner guitar chord boxes with suggested progression.",
+      "chord_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\chord_sheets\\HVLC_4c8cb434.pdf",
+      "chord_sheet_pdf_url": "/generated/chord_sheets/HVLC_4c8cb434.pdf"
+    },
+    "lyrics": {
+      "text": "[Verse 1]\nIn the haze of a forgotten night\nI see your smile, a gentle light\nA fleeting moment, a whispered tone\nA memory that makes me feel at home\n\n[Chorus]\nOh, the ghosts we leave behind\nEchoes of love, a heart of mine\nIn dreams, I find my way back\nTo the moments that we never looked back\n\n[Verse 2]\nSummer breeze, a porch swing sway\nLaughter and tears, a love that stayed\nIn the silence, I hear your voice\nA whispered promise, a heartfelt choice\n\n[Chorus]\nOh, the ghosts we leave behind\nEchoes of love, a heart of mine\nIn dreams, I find my way back\nTo the moments that we never looked back",
+      "structure": "verse/chorus",
+      "lyrics_pdf": "E:\\EchoEcho\\backend\\generated\\lyrics\\Memories_296bce9b.pdf",
+      "lyrics_pdf_url": "/generated/lyrics/Memories_296bce9b.pdf"
+    },
+    "copyright": {
+      "status": "safe",
+      "similarity_score": 0.91,
+      "notes": "Appears original.",
+      "matches": [],
+      "risk": "None",
+      "copyright_status": "Unknown",
+      "song_title": "",
+      "artist": "",
+      "details": "No strong evidence of existing lyrics."
+    }
+  },
+  {
+    "mode": "musicgen",
+    "code": "LWZS",
+    "song_id": "LWZS",
+    "created_at": "2026-06-11T17:47:08.858404+00:00",
+    "prompt": "30-second instrumental inspiration sketch. gentle optimism, tender warmth, forward-looking emotion and soft-focus, floating, hazy, dreamlike mood. lo-fi style. Theme: sentimental atmosphere, emotional recollections, longing, dreamy mood. piano, bass and drums ensemble only. Only these instruments: piano, bass and drums. No hidden accompaniment. No acoustic guitar. No electric guitar. No guitar. No violin. No strings. No synthesizers. No saxophone. No flute. No choir pads. No brass. Instrumental only. No vocals. No lyrics. Tempo 90 BPM. Moderate complexity. Energy level 4. Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
+    "mood": "Hopeful + Dreamy",
+    "theme": "Memories",
+    "style": "Lo-fi",
+    "instruments": [
+      "Piano",
+      "Bass",
+      "Drums"
+    ],
+    "tempo": 90,
+    "complexity": "Moderate",
+    "duration": 30,
+    "energy": 4,
+    "generation_time_seconds": 433,
+    "generation_time": "7m 13s",
+    "filename": "LWZS.wav",
+    "audio_filename": "LWZS.wav",
+    "output_file": "generated/LWZS.wav",
+    "audio_url": "/generated/LWZS.wav",
+    "inference_seconds": 432.55,
+    "qa_attempt": 1,
+    "music_sheet": {
+      "summary": "Title: LWZS\nKey: C    Time: 4/4    Tempo: 90 BPM\nStyle: Lo-fi    Mood: Hopeful + Dreamy\nInstruments: Piano, Bass, Drums\nChord sketch: C | Em | F | G\nNotation: lead melody staff with chord symbols for musician reference.",
+      "music_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\music_sheets\\LWZS_3b8e5565.pdf",
+      "music_sheet_pdf_url": "/generated/music_sheets/LWZS_3b8e5565.pdf"
+    },
+    "chord_sheet": {
+      "summary": "Title: LWZS\nTempo: 90 BPM    Style: Lo-fi    Mood: Hopeful + Dreamy\nChord progression: C | Em | F | G\nFormat: beginner guitar chord boxes with suggested progression.",
+      "chord_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\chord_sheets\\LWZS_01f7162d.pdf",
+      "chord_sheet_pdf_url": "/generated/chord_sheets/LWZS_01f7162d.pdf"
+    },
+    "lyrics": {
+      "text": "[Verse 1]\nIn the haze of a forgotten day\nI see your smile, it finds its way\nA glimpse of joy that's hard to define\nA memory that's mine, a heart that's aligned\n\n[Chorus]\nLike a leaf on a gentle stream\nOur moments blend, a dream\nWhispers of a love so true\nIn the echoes, I'll find my way to you\n\n[Verse 2]\nMidnight whispers, a summer breeze\nOur laughter echoes, a sweet tease\nA dance of footsteps, a love so free\nA moment's magic, a memory\n\n[Chorus]\nLike a leaf on a gentle stream\nOur moments blend, a dream\nWhispers of a love so true\nIn the echoes, I'll find my way to you",
+      "structure": "verse/chorus",
+      "lyrics_pdf": "E:\\EchoEcho\\backend\\generated\\lyrics\\Memories_d74dd43f.pdf",
+      "lyrics_pdf_url": "/generated/lyrics/Memories_d74dd43f.pdf"
+    },
+    "copyright": {
+      "status": "safe",
+      "similarity_score": 0.91,
+      "notes": "Appears original.",
+      "matches": [],
+      "risk": "None",
+      "copyright_status": "Unknown",
+      "song_title": "",
+      "artist": "",
+      "details": "No strong evidence of existing lyrics."
+    },
+    "quality_judge": {
+      "passed": true,
+      "score": 1.0,
+      "reasons": [
+        "Audio instrument model unavailable; skipped instrument detection: ffmpeg was not found but is required to load audio files from filename"
+      ],
+      "token_cache_file": "E:\\EchoEcho\\backend\\generated\\qa_tokens\\LWZS_tokens.json"
+    }
+  },
+  {
+    "code": "AGZT",
+    "song_id": "AGZT",
+    "task_id": "a3a1fd9bf119f86296a057d95247d24c",
+    "created_at": "2026-06-13T05:24:16.515344+00:00",
+    "mood": "Dark",
+    "theme": "Love",
+    "style": "Ambient",
+    "instruments": [
+      "Guitar"
+    ],
+    "tempo": 95,
+    "energy": 4,
+    "prompt": "Create a 30 second instrumental songwriting inspiration sketch. Mood: Dark. Theme: Love. Style: Ambient. Instruments: Guitar. Tempo: 95 BPM. Energy: 4/10. Keep it memorable, compact, melodic, and emotionally clear.",
+    "original_audio_filename": "ECHO_AGZT_original.mp3",
+    "trimmed_audio_filename": null,
+    "mode": "api",
+    "fast": true,
+    "duration": 30,
+    "filename": "ECHO_AGZT_original.mp3",
+    "audio_filename": "ECHO_AGZT_original.mp3",
+    "audio_url": "/generated/ECHO_AGZT_original.mp3",
+    "music_sheet": {
+      "summary": "Music sheet generation unavailable. Reason: FPDF.cell() got an unexpected keyword argument 'new_x'",
+      "structure": "unavailable"
+    },
+    "chord_sheet": {
+      "summary": "Chord sheet generation unavailable. Reason: FPDF.cell() got an unexpected keyword argument 'new_x'",
+      "structure": "unavailable"
+    },
+    "lyrics": {
+      "text": "[Verse 1]\nIn twilight's hush, where shadows roam\nYour eyes locked on mine, a heart's dark home\nA love forged in the depths of night\nWhere starlight's gone, and love's last light\n\n[Chorus]\nLost in your love, I drown and sink\nA sea of devotion, my heart does blink\nIn this darkness, I find my home\nA place where love, forever, will be known\n\n[Verse 2]\nMemories of your touch, they still remain\nA ghostly whisper, a love in vain\nThe city sleeps, its secrets keep\nOur love's a flame, in the darkness weep\n\n[Chorus]\nLost in your love, I drown and sink\nA sea of devotion, my heart does blink\nIn this darkness, I find my home\nA place where love, forever, will be known",
+      "structure": "verse/chorus"
+    },
+    "copyright": {
+      "status": "risky",
+      "similarity_score": 0.99,
+      "notes": "Potential copyright conflict.",
+      "matches": [
+        {
+          "title": "In twilight's hush, where shadows play A lone figure walks ...",
+          "artist": "",
+          "risk": "High",
+          "copyright_status": "Protected"
+        }
+      ],
+      "risk": "High",
+      "copyright_status": "Protected",
+      "song_title": "In twilight's hush, where shadows play A lone figure walks ...",
+      "artist": "",
+      "details": "Lyrics strongly resemble an existing song."
+    }
+  },
+  {
+    "mode": "musicgen",
+    "code": "ZPEX",
+    "song_id": "ZPEX",
+    "created_at": "2026-06-13T05:39:53.665246+00:00",
+    "prompt": "30-second instrumental inspiration sketch. soft-focus, floating, hazy, dreamlike mood. hip-hop and dramatic style. Theme: urban. Solo guitar performance. Solo guitar only. Only guitar. No accompanying instruments. No piano. No acoustic guitar. No electric guitar. No guitar. No violin. No strings. No bass. No drums. No synthesizers. No saxophone. No flute. No choir pads. No brass. No percussion. Instrumental only. No vocals. No lyrics. Tempo 90 BPM. Moderate complexity. Energy level 7. late night city drive Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
+    "mood": "Dreamy",
+    "theme": "Urban",
+    "style": "Hip-hop + Dramatic",
+    "instruments": [
+      "Guitar"
+    ],
+    "tempo": 90,
+    "complexity": "Moderate",
+    "duration": 30,
+    "energy": 7,
+    "generation_time_seconds": 514,
+    "generation_time": "8m 34s",
+    "filename": "ZPEX.wav",
+    "audio_filename": "ZPEX.wav",
+    "output_file": "generated/ZPEX.wav",
+    "audio_url": "/generated/ZPEX.wav",
+    "inference_seconds": 513.65,
+    "qa_attempt": 1,
+    "music_sheet": {
+      "summary": "Music sheet generation unavailable. Reason: FPDF.cell() got an unexpected keyword argument 'new_x'",
+      "structure": "unavailable"
+    },
+    "chord_sheet": {
+      "summary": "Chord sheet generation unavailable. Reason: FPDF.cell() got an unexpected keyword argument 'new_x'",
+      "structure": "unavailable"
+    },
+    "lyrics": {
+      "text": "I now can give a great answer\n\n[Verse 1]\nNeon lights, they dance on walls\nCity streets, a lonely call\nI'm searching for a ghost in the night\nA reflection of a love that's lost in flight\nFading fast, like the city lights\nI'm chasing shadows, through the urban night\n\n[Chorus]\nLost in the haze, I'm driving slow\nThe city's moving, but my heart's in tow\nEvery mile, I'm searching for a place\nTo call my own, to leave this urban pace\n\n[Verse 2]\nI see the city, in a different way\nA tapestry of dreams, in the dark of day\nEvery face, a story yet untold\nA world of pain, a world of gold\nI'm searching for a beacon in the dark\nA guiding light, to lead me to my heart\n\n[Chorus]\nLost in the haze, I'm driving slow\nThe city's moving, but my heart's in tow\nEvery mile, I'm searching for a place\nTo call my own, to leave this urban pace",
+      "structure": "verse/chorus"
+    },
+    "copyright": {
+      "status": "risky",
+      "similarity_score": 0.99,
+      "notes": "Potential copyright conflict.",
+      "matches": [
+        {
+          "title": "Favorite \u201cOh shit, that's deep\u201d lyric? : r/Metalcore",
+          "artist": "",
+          "risk": "High",
+          "copyright_status": "Protected"
+        }
+      ],
+      "risk": "High",
+      "copyright_status": "Protected",
+      "song_title": "Favorite \u201cOh shit, that's deep\u201d lyric? : r/Metalcore",
+      "artist": "",
+      "details": "Lyrics strongly resemble an existing song."
+    },
+    "quality_judge": {
+      "passed": true,
+      "score": 1.0,
+      "reasons": [
+        "Audio instrument model unavailable; skipped instrument detection: ffmpeg was not found but is required to load audio files from filename"
+      ],
+      "token_cache_file": "E:\\EchoEcho\\backend\\generated\\qa_tokens\\ZPEX_tokens.json"
+    }
+  },
+  {
+    "mode": "musicgen",
+    "code": "KRDV",
+    "song_id": "KRDV",
+    "created_at": "2026-06-13T05:48:10.817371+00:00",
+    "prompt": "30-second instrumental inspiration sketch. soft-focus, floating, hazy, dreamlike mood. hip-hop and dramatic style. Theme: urban. Solo guitar performance. Solo guitar only. Only guitar. No accompanying instruments. No piano. No acoustic guitar. No electric guitar. No guitar. No violin. No strings. No bass. No drums. No synthesizers. No saxophone. No flute. No choir pads. No brass. No percussion. Instrumental only. No vocals. No lyrics. Tempo 90 BPM. Moderate complexity. Energy level 7. late night city drive Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
+    "mood": "Dreamy",
+    "theme": "Urban",
+    "style": "Hip-hop + Dramatic",
+    "instruments": [
+      "Guitar"
+    ],
+    "tempo": 90,
+    "complexity": "Moderate",
+    "duration": 30,
+    "energy": 7,
+    "generation_time_seconds": 457,
+    "generation_time": "7m 37s",
+    "filename": "KRDV.wav",
+    "audio_filename": "KRDV.wav",
+    "output_file": "generated/KRDV.wav",
+    "audio_url": "/generated/KRDV.wav",
+    "inference_seconds": 457.38,
+    "qa_attempt": 1,
+    "music_sheet": {
+      "summary": "Music sheet generation unavailable. Reason: FPDF.cell() got an unexpected keyword argument 'new_x'",
+      "structure": "unavailable"
+    },
+    "chord_sheet": {
+      "summary": "Chord sheet generation unavailable. Reason: FPDF.cell() got an unexpected keyword argument 'new_x'",
+      "structure": "unavailable"
+    },
+    "lyrics": {
+      "text": "[Verse 1]\nLost in neon shadows cast\nCity streets, a lonely past\nReflections of concrete dreams\nIn the haze, my heart it beams\nI'm chasing the urban high\nWhere the nights are black and wide\nThe city calls, it's a whispered lie\nCome closer, let the darkness fly\n\n[Chorus]\nI'm running through the city night\nA solitary heartbeat in the light\nA fleeting moment, a distant cry\nIn the city's noise, I'm searching high\nFor a refuge from the urban grind\nWhere love and dreams are left behind\n\n[Verse 2]\nIn the stillness of late night drive\nI see the city's beauty rise\nA canvas of lights, a kaleidoscope of dreams\nThe rhythm of the wheels, it's a symphony it seems\nI'm searching for a place to call my own\nA haven from the urban stone\nWhere my heart can roam free and wide\nAnd the city's noise becomes a gentle guide\n\n[Chorus]\nI'm running through the city night\nA solitary heartbeat in the light\nA fleeting moment, a distant cry\nIn the city's noise, I'm searching high\nFor a refuge from the urban grind\nWhere love and dreams are left behind",
+      "structure": "verse/chorus"
+    },
+    "copyright": {
+      "status": "risky",
+      "similarity_score": 0.99,
+      "notes": "Potential copyright conflict.",
+      "matches": [
+        {
+          "title": "Neon shadows",
+          "artist": "",
+          "risk": "High",
+          "copyright_status": "Protected"
+        }
+      ],
+      "risk": "High",
+      "copyright_status": "Protected",
+      "song_title": "Neon shadows",
+      "artist": "",
+      "details": "Lyrics strongly resemble an existing song."
+    },
+    "quality_judge": {
+      "passed": true,
+      "score": 1.0,
+      "reasons": [
+        "Audio instrument model unavailable; skipped instrument detection: ffmpeg was not found but is required to load audio files from filename"
+      ],
+      "token_cache_file": "E:\\EchoEcho\\backend\\generated\\qa_tokens\\KRDV_tokens.json"
+    }
+  },
+  {
+    "mode": "musicgen",
+    "code": "DWRI",
+    "song_id": "DWRI",
+    "created_at": "2026-06-13T06:16:28.668478+00:00",
+    "prompt": "30-second instrumental inspiration sketch. calm mood. lo-fi and acoustic style. Theme: organic calm, open air, gentle landscape. Solo piano performance. Solo piano only. Only piano. No accompanying instruments. No acoustic guitar. No electric guitar. No guitar. No violin. No strings. No bass. No drums. No synthesizers. No saxophone. No flute. No choir pads. No brass. No percussion. Instrumental only. No vocals. No lyrics. Tempo 90 BPM. Moderate complexity. Energy level 4. cozy winter fireplace Memorable melody. Creative sketch. Suitable for inspiring songwriters.",
+    "mood": "Calm",
+    "theme": "Nature",
+    "style": "Lo-fi + Acoustic",
+    "instruments": [
+      "Piano"
+    ],
+    "tempo": 90,
+    "complexity": "Moderate",
+    "duration": 30,
+    "energy": 4,
+    "generation_time_seconds": 316,
+    "generation_time": "5m 16s",
+    "filename": "DWRI.wav",
+    "audio_filename": "DWRI.wav",
+    "output_file": "generated/DWRI.wav",
+    "audio_url": "/generated/DWRI.wav",
+    "inference_seconds": 316.08,
+    "qa_attempt": 1,
+    "music_sheet": {
+      "summary": "Title: DWRI\nKey: C    Time: 4/4    Tempo: 90 BPM\nStyle: Lo-fi + Acoustic    Mood: Calm\nInstruments: Piano\nChord sketch: C | Am | F | G\nNotation: lead melody staff with chord symbols for musician reference.",
+      "music_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\music_sheets\\DWRI_93e81062.pdf",
+      "music_sheet_pdf_url": "/generated/music_sheets/DWRI_93e81062.pdf"
+    },
+    "chord_sheet": {
+      "summary": "Title: DWRI\nTempo: 90 BPM    Style: Lo-fi + Acoustic    Mood: Calm\nChord progression: C | Am | F | G\nFormat: beginner guitar chord boxes with suggested progression.",
+      "chord_sheet_pdf": "E:\\EchoEcho\\backend\\generated\\chord_sheets\\DWRI_c0355961.pdf",
+      "chord_sheet_pdf_url": "/generated/chord_sheets/DWRI_c0355961.pdf"
+    },
+    "lyrics": {
+      "text": "[Verse 1]\nSnowflakes gently falling slow,\nBlanketing the world below,\nFrosty mornings, dark and cold,\nWinter's peaceful silence holds.\n\n[Chorus]\nIn the stillness of the night,\nStars shine softly, a gentle light,\nGuiding me to a place of peace,\nWhere love and calm entwine and cease.\n\n[Verse 2]\nRiver whispers through the trees,\nLeaves rustling softly in the breeze,\nThe scent of pine, a forest deep,\nA world of calm, our spirits keep.\n\n[Chorus]\nIn the stillness of the night,\nStars shine softly, a gentle light,\nGuiding me to a place of peace,\nWhere love and calm entwine and cease.",
+      "structure": "verse/chorus",
+      "lyrics_pdf": "E:\\EchoEcho\\backend\\generated\\lyrics\\Nature_41786c1a.pdf",
+      "lyrics_pdf_url": "/generated/lyrics/Nature_41786c1a.pdf"
+    },
+    "copyright": {
+      "status": "risky",
+      "similarity_score": 0.99,
+      "notes": "Potential copyright conflict.",
+      "matches": [
+        {
+          "title": "Christian poet shares winter-themed poem about ...",
+          "artist": "Facebook",
+          "risk": "High",
+          "copyright_status": "Protected"
+        }
+      ],
+      "risk": "High",
+      "copyright_status": "Protected",
+      "song_title": "Christian poet shares winter-themed poem about ...",
+      "artist": "Facebook",
+      "details": "Lyrics strongly resemble an existing song."
+    },
+    "quality_judge": {
+      "passed": true,
+      "score": 1.0,
+      "reasons": [
+        "Audio instrument model unavailable; skipped instrument detection: ffmpeg was not found but is required to load audio files from filename"
+      ],
+      "token_cache_file": "E:\\EchoEcho\\backend\\generated\\qa_tokens\\DWRI_tokens.json"
     }
   }
 ]

@@ -35,13 +35,17 @@ from .music_generator import (
     load_model,
 )
 from .agents.lyrics_agent import generate_lyrics as generate_agent_lyrics
+from .agents.composition_judge_agent import CompositionJudgeAgent
 from .agents.copyright_agent.main import check_copyright
 from .agents.copyright_agent.models.request_model import CopyrightCheckRequest
+from .sheet_generator.chord_sheet import generate_chord_sheet_pdf
+from .sheet_generator.music_sheet import generate_music_sheet_pdf
 
 
 BASE_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = BASE_DIR.parent
 FRONTEND_DIR = PROJECT_DIR / "frontend"
+FRONTEND_DIST_DIR = FRONTEND_DIR / "dist"
 GENERATED_DIR = BASE_DIR / "generated"
 STATIC_DIR = BASE_DIR / "static"
 HISTORY_FILE = BASE_DIR / "song_history.json"
@@ -58,6 +62,7 @@ ROTATING_STATUS_MESSAGES = [
     "Finalizing audio",
 ]
 LYRICS_FALLBACK = "Lyrics generation is unavailable for this song, but the music was generated successfully."
+MAX_MUSICGEN_QA_ATTEMPTS = 3
 
 logging.basicConfig(
     level=logging.INFO,
@@ -212,13 +217,35 @@ def lyrics_context(request: GenerateRequest, prompt: str) -> dict[str, Any]:
     }
 
 
+def lyrics_pdf_url(pdf_path: str) -> str:
+    path = Path(pdf_path)
+    try:
+        relative_path = path.resolve().relative_to(GENERATED_DIR.resolve())
+    except ValueError:
+        relative_path = Path("lyrics") / path.name
+    return f"/generated/{relative_path.as_posix()}"
+
+
+def generated_file_url(file_path: str) -> str:
+    path = Path(file_path)
+    try:
+        relative_path = path.resolve().relative_to(GENERATED_DIR.resolve())
+    except ValueError:
+        relative_path = Path(path.name)
+    return f"/generated/{relative_path.as_posix()}"
+
+
 def generate_lyrics_section(request: GenerateRequest, prompt: str) -> tuple[dict[str, str], bool]:
     try:
         lyrics = generate_agent_lyrics(lyrics_context(request, prompt))
-        return {
+        result = {
             "text": lyrics.get("text", "").strip() or LYRICS_FALLBACK,
             "structure": lyrics.get("structure", "verse/chorus"),
-        }, True
+        }
+        if lyrics.get("lyrics_pdf"):
+            result["lyrics_pdf"] = lyrics["lyrics_pdf"]
+            result["lyrics_pdf_url"] = generated_file_url(lyrics["lyrics_pdf"])
+        return result, True
     except Exception as exc:
         logger.warning("Lyrics generation unavailable: %s", exc)
         return {
@@ -299,10 +326,71 @@ def copyright_check_text(payload: CopyrightCheckApiRequest, record: dict[str, An
 
 def add_agent_sections(record: dict[str, Any], request: GenerateRequest, prompt: str) -> None:
     update_generation_status("Writing lyrics", 93)
+    started = time.perf_counter()
     lyrics, lyrics_available = generate_lyrics_section(request, prompt)
-    update_generation_status("Checking copyright", 96)
+    logger.info("Lyrics and lyrics PDF section completed in %.2fs", time.perf_counter() - started)
+
+    update_generation_status("Creating music sheet", 95)
+    started = time.perf_counter()
+    record["music_sheet"] = generate_music_sheet_section(record, request, prompt)
+    logger.info("Music sheet PDF section completed in %.2fs", time.perf_counter() - started)
+
+    started = time.perf_counter()
+    record["chord_sheet"] = generate_chord_sheet_section(record, request, prompt)
+    logger.info("Chord sheet PDF section completed in %.2fs", time.perf_counter() - started)
+
+    update_generation_status("Checking copyright", 97)
     record["lyrics"] = lyrics
+    started = time.perf_counter()
     record["copyright"] = generate_copyright_section(lyrics["text"], lyrics_available)
+    logger.info("Copyright section completed in %.2fs", time.perf_counter() - started)
+
+
+def music_sheet_context(record: dict[str, Any], request: GenerateRequest, prompt: str) -> dict[str, Any]:
+    return {
+        "song_id": record_code(record),
+        "title": record_code(record) or "EchoEcho Music Sheet",
+        "prompt": prompt,
+        "mood": first_or_join(request.moods or ([request.mood] if request.mood else []), str(record.get("mood") or "")),
+        "theme": first_or_join(request.themes or ([request.theme] if request.theme else []), str(record.get("theme") or "")),
+        "style": first_or_join(request.genres or ([request.style] if request.style else []), str(record.get("style") or "")),
+        "genre": first_or_join(request.genres or ([request.style] if request.style else []), str(record.get("style") or "")),
+        "tempo": request.tempo or record.get("tempo") or 90,
+        "bpm": request.tempo or record.get("tempo") or 90,
+        "instruments": request.instruments or record.get("instruments") or [],
+    }
+
+
+def generate_music_sheet_section(record: dict[str, Any], request: GenerateRequest, prompt: str) -> dict[str, str]:
+    try:
+        sheet = generate_music_sheet_pdf(music_sheet_context(record, request, prompt))
+        result = {"summary": sheet.get("summary", "")}
+        if sheet.get("music_sheet_pdf"):
+            result["music_sheet_pdf"] = sheet["music_sheet_pdf"]
+            result["music_sheet_pdf_url"] = generated_file_url(sheet["music_sheet_pdf"])
+        return result
+    except Exception as exc:
+        logger.warning("Music sheet generation unavailable: %s", exc)
+        return {
+            "summary": f"Music sheet generation unavailable. Reason: {exc}",
+            "structure": "unavailable",
+        }
+
+
+def generate_chord_sheet_section(record: dict[str, Any], request: GenerateRequest, prompt: str) -> dict[str, str]:
+    try:
+        sheet = generate_chord_sheet_pdf(music_sheet_context(record, request, prompt))
+        result = {"summary": sheet.get("summary", "")}
+        if sheet.get("chord_sheet_pdf"):
+            result["chord_sheet_pdf"] = sheet["chord_sheet_pdf"]
+            result["chord_sheet_pdf_url"] = generated_file_url(sheet["chord_sheet_pdf"])
+        return result
+    except Exception as exc:
+        logger.warning("Chord sheet generation unavailable: %s", exc)
+        return {
+            "summary": f"Chord sheet generation unavailable. Reason: {exc}",
+            "structure": "unavailable",
+        }
 
 
 def normalize_mode(value: str | None) -> str:
@@ -385,6 +473,9 @@ def unified_response(record: dict[str, Any]) -> dict[str, Any]:
         "output_file": song.get("output_file") or (f"generated/{song['filename']}" if song.get("filename") else None),
         "download_filename": song.get("filename"),
         "lyrics": song.get("lyrics"),
+        "music_sheet": song.get("music_sheet"),
+        "chord_sheet": song.get("chord_sheet"),
+        "quality_judge": song.get("quality_judge"),
         "copyright": song.get("copyright"),
         "song": song,
         "record": song,
@@ -469,6 +560,19 @@ def create_song_id(extension: str) -> str:
     raise RuntimeError("Could not create a unique song ID.")
 
 
+def request_judge_context(request: GenerateRequest) -> dict[str, Any]:
+    return {
+        "moods": request.moods or ([request.mood] if request.mood else []),
+        "genres": request.genres or ([request.style] if request.style else []),
+        "themes": request.themes or ([request.theme] if request.theme else []),
+        "instruments": request.instruments,
+        "tempo": request.tempo,
+        "complexity": request.complexity,
+        "energy": request.energy,
+        "custom_prompt": request.custom_prompt or request.prompt,
+    }
+
+
 def format_seconds(seconds: float) -> str:
     total_seconds = max(0, int(round(seconds)))
     minutes = total_seconds // 60
@@ -530,13 +634,6 @@ def generate_with_musicgen(request: GenerateRequest) -> dict[str, Any]:
     total_start = time.perf_counter()
     reset_generation_status()
     update_generation_status("Preparing prompt", 0)
-    try:
-        song_id = create_song_id("wav")
-        filename = f"{song_id}.wav"
-        output_path = GENERATED_DIR / filename
-    except Exception as error:
-        update_generation_status("Failed", 100)
-        raise HTTPException(status_code=500, detail=f"Song ID assignment failed: {error}") from error
 
     with model_lock:
         ready_model = model
@@ -547,64 +644,122 @@ def generate_with_musicgen(request: GenerateRequest) -> dict[str, Any]:
         update_generation_status("Failed", 100)
         raise HTTPException(status_code=503, detail="MusicGen is still loading.")
 
-    try:
-        custom_prompt = request.custom_prompt.strip() or request.prompt.strip()
-        prompt = build_music_prompt(
-            moods=request.moods or ([request.mood] if request.mood else []),
-            genres=request.genres or ([request.style] if request.style else []),
-            themes=request.themes or ([request.theme] if request.theme else []),
-            instruments=request.instruments,
-            tempo=request.tempo,
-            complexity=request.complexity,
-            energy=request.energy,
-            custom_prompt=custom_prompt,
-            duration_seconds=request.duration,
-        )
-        generation_result = generate_music(
-            ready_model,
-            ready_processor,
-            prompt,
-            output_path,
-            progress_callback=update_generation_status,
-            duration_seconds=request.duration,
-        )
-    except RuntimeError as error:
-        update_generation_status("Failed", 100)
-        if "out of memory" in str(error).lower():
-            raise HTTPException(status_code=500, detail="MusicGen ran out of memory.") from error
-        raise HTTPException(status_code=500, detail=f"Music generation failed: {error}") from error
-    except Exception as error:
-        update_generation_status("Failed", 100)
-        logger.exception("MusicGen generation failed")
-        raise HTTPException(status_code=500, detail=f"Unexpected generation error: {error}") from error
+    custom_prompt = request.custom_prompt.strip() or request.prompt.strip()
+    prompt = build_music_prompt(
+        moods=request.moods or ([request.mood] if request.mood else []),
+        genres=request.genres or ([request.style] if request.style else []),
+        themes=request.themes or ([request.theme] if request.theme else []),
+        instruments=request.instruments,
+        tempo=request.tempo,
+        complexity=request.complexity,
+        energy=request.energy,
+        custom_prompt=custom_prompt,
+        duration_seconds=request.duration,
+    )
+    judge = CompositionJudgeAgent()
+    last_record: dict[str, Any] | None = None
 
-    total_seconds = time.perf_counter() - total_start
-    record = {
-        "mode": "musicgen",
-        "code": song_id,
-        "song_id": song_id,
-        "created_at": datetime.now(timezone.utc).isoformat(),
-        "prompt": prompt,
-        "mood": first_or_join(request.moods or ([request.mood] if request.mood else []), ""),
-        "theme": first_or_join(request.themes or ([request.theme] if request.theme else []), ""),
-        "style": first_or_join(request.genres or ([request.style] if request.style else []), ""),
-        "instruments": request.instruments,
-        "tempo": request.tempo,
-        "complexity": request.complexity,
-        "duration": request.duration,
-        "energy": request.energy,
-        "generation_time_seconds": round(total_seconds),
-        "generation_time": format_seconds(total_seconds),
-        "filename": filename,
-        "audio_filename": filename,
-        "output_file": f"generated/{filename}",
-        "audio_url": f"/generated/{filename}",
-        "inference_seconds": round(float(generation_result.get("inference_seconds", 0)), 2),
-    }
-    add_agent_sections(record, request, prompt)
-    append_history(record)
-    update_generation_status("Completed", 100)
-    return unified_response(record)
+    for attempt in range(1, MAX_MUSICGEN_QA_ATTEMPTS + 1):
+        try:
+            song_id = create_song_id("wav")
+            filename = f"{song_id}.wav"
+            output_path = GENERATED_DIR / filename
+        except Exception as error:
+            update_generation_status("Failed", 100)
+            raise HTTPException(status_code=500, detail=f"Song ID assignment failed: {error}") from error
+
+        try:
+            if attempt > 1:
+                update_generation_status(f"Regenerating composition attempt {attempt}", 8)
+            generation_result = generate_music(
+                ready_model,
+                ready_processor,
+                prompt,
+                output_path,
+                progress_callback=update_generation_status,
+                duration_seconds=request.duration,
+            )
+        except RuntimeError as error:
+            update_generation_status("Failed", 100)
+            if "out of memory" in str(error).lower():
+                raise HTTPException(status_code=500, detail="MusicGen ran out of memory.") from error
+            raise HTTPException(status_code=500, detail=f"Music generation failed: {error}") from error
+        except Exception as error:
+            update_generation_status("Failed", 100)
+            logger.exception("MusicGen generation failed")
+            raise HTTPException(status_code=500, detail=f"Unexpected generation error: {error}") from error
+
+        total_seconds = time.perf_counter() - total_start
+        record = {
+            "mode": "musicgen",
+            "code": song_id,
+            "song_id": song_id,
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "prompt": prompt,
+            "mood": first_or_join(request.moods or ([request.mood] if request.mood else []), ""),
+            "theme": first_or_join(request.themes or ([request.theme] if request.theme else []), ""),
+            "style": first_or_join(request.genres or ([request.style] if request.style else []), ""),
+            "instruments": request.instruments,
+            "tempo": request.tempo,
+            "complexity": request.complexity,
+            "duration": request.duration,
+            "energy": request.energy,
+            "generation_time_seconds": round(total_seconds),
+            "generation_time": format_seconds(total_seconds),
+            "filename": filename,
+            "audio_filename": filename,
+            "output_file": f"generated/{filename}",
+            "audio_url": f"/generated/{filename}",
+            "inference_seconds": round(float(generation_result.get("inference_seconds", 0)), 2),
+            "qa_attempt": attempt,
+        }
+        add_agent_sections(record, request, prompt)
+        update_generation_status("Judging composition quality", 98)
+        judge_result = judge.run(
+            record,
+            request_judge_context(request),
+            generation_result.get("token_context", {}),
+            output_path,
+        )
+        record["quality_judge"] = judge_result.to_dict()
+        last_record = record
+        logger.info(
+            "Judge agent result attempt=%s passed=%s score=%s reasons=%s",
+            attempt,
+            judge_result.passed,
+            judge_result.score,
+            "; ".join(judge_result.reasons),
+        )
+        print(
+            f"Judge agent attempt {attempt}: passed={judge_result.passed}, "
+            f"score={judge_result.score}, reasons={'; '.join(judge_result.reasons)}",
+            flush=True,
+        )
+        if judge_result.passed:
+            print("composition passes", flush=True)
+            logger.info("Judge agent approved composition. Returning generated result to user.")
+            append_history(record)
+            update_generation_status("Completed", 100)
+            return unified_response(record)
+        if attempt < MAX_MUSICGEN_QA_ATTEMPTS:
+            print("composition fails, regenerating....", flush=True)
+            logger.warning(
+                "Judge agent rejected composition. Regenerating attempt %s of %s.",
+                attempt + 1,
+                MAX_MUSICGEN_QA_ATTEMPTS,
+            )
+        else:
+            print("composition fails, no attempts left", flush=True)
+            logger.error("Judge agent rejected final attempt. Returning failure to user.")
+
+    update_generation_status("Failed", 100)
+    raise HTTPException(
+        status_code=500,
+        detail=(
+            "Music generation did not pass quality checks after regeneration. "
+            f"Last judge result: {last_record.get('quality_judge') if last_record else 'unavailable'}"
+        ),
+    )
 
 
 @app.post("/generate")
@@ -624,7 +779,7 @@ async def api_generate(request: GenerateRequest) -> dict[str, Any]:
 
 @app.post("/generate-inspiration")
 async def generate_inspiration(request: GenerateRequest) -> dict[str, Any]:
-    return await api_generate(request)
+    return await generate(request)
 
 
 @app.get("/health")
@@ -864,7 +1019,7 @@ def get_audio(song_id: str) -> FileResponse:
 
 @app.get("/")
 def serve_frontend() -> FileResponse:
-    index_path = FRONTEND_DIR / "index.html"
+    index_path = frontend_index_path()
     if not index_path.exists():
         raise HTTPException(status_code=404, detail="Frontend index.html not found.")
     return FileResponse(index_path)
@@ -872,12 +1027,23 @@ def serve_frontend() -> FileResponse:
 
 @app.get("/styles.css")
 def serve_styles() -> FileResponse:
-    return FileResponse(FRONTEND_DIR / "styles.css", media_type="text/css")
+    legacy_path = FRONTEND_DIR / "styles.css"
+    if not legacy_path.exists():
+        raise HTTPException(status_code=404, detail="Legacy frontend stylesheet not found. Build the Vite frontend instead.")
+    return FileResponse(legacy_path, media_type="text/css")
 
 
 @app.get("/script.js")
 def serve_script() -> FileResponse:
-    return FileResponse(FRONTEND_DIR / "script.js", media_type="application/javascript")
+    legacy_path = FRONTEND_DIR / "script.js"
+    if not legacy_path.exists():
+        raise HTTPException(status_code=404, detail="Legacy frontend script not found. Build the Vite frontend instead.")
+    return FileResponse(legacy_path, media_type="application/javascript")
+
+
+def frontend_index_path() -> Path:
+    built_index = FRONTEND_DIST_DIR / "index.html"
+    return built_index if built_index.exists() else FRONTEND_DIR / "index.html"
 
 
 @app.get("/favicon.ico", include_in_schema=False)
@@ -890,6 +1056,18 @@ def favicon() -> FileResponse:
 
 app.mount("/generated", StaticFiles(directory=GENERATED_DIR), name="generated")
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+if (FRONTEND_DIST_DIR / "assets").exists():
+    app.mount("/assets", StaticFiles(directory=FRONTEND_DIST_DIR / "assets"), name="frontend-assets")
+
+
+@app.get("/{spa_path:path}", include_in_schema=False)
+def serve_spa_route(spa_path: str) -> FileResponse:
+    if spa_path.startswith(("api/", "generated/", "static/", "assets/", "download/", "audio/")):
+        raise HTTPException(status_code=404, detail="Not found")
+    index_path = frontend_index_path()
+    if not index_path.exists():
+        raise HTTPException(status_code=404, detail="Frontend index.html not found.")
+    return FileResponse(index_path)
 
 
 if __name__ == "__main__":

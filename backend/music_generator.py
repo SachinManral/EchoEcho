@@ -254,6 +254,16 @@ def generate_music(
     if progress_callback:
         progress_callback("Encoding prompt", 10)
     inputs = processor(text=[prompt], padding=True, return_tensors="pt")
+    token_context = {}
+    if "input_ids" in inputs:
+        input_ids = inputs["input_ids"][0].detach().cpu().tolist()
+        token_context = {
+            "prompt": prompt,
+            "prompt_token_count": len(input_ids),
+            "input_ids": input_ids,
+            "max_new_tokens": max_new_tokens,
+            "duration_seconds": duration_seconds,
+        }
     inputs = {name: value.to(device) for name, value in inputs.items()}
     logger.info("Prompt tokenized in %.2f seconds", time.perf_counter() - token_start)
 
@@ -301,4 +311,5 @@ def generate_music(
         "inference_seconds": inference_seconds,
         "wav_export_seconds": wav_seconds,
         "total_seconds": total_seconds,
+        "token_context": token_context,
     }

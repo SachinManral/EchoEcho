@@ -1,0 +1,54 @@
+{
+  "song_id": "QAF",
+  "prompt": "Hopeful mood. Lo-fi style. Theme: Rain. Only piano. Tempo 90 BPM. Moderate complexity. Energy level 4.",
+  "token_context": {
+    "audio_metrics": {
+      "exists": true,
+      "sample_rate": 32000,
+      "duration_seconds": 6.0,
+      "rms": 0.070694,
+      "peak": 0.100006
+    },
+    "audio_instrument_metrics": {
+      "enabled": false,
+      "model": "laion/clap-htsat-unfused",
+      "threshold": 0.12,
+      "selected_instruments": [
+        "piano"
+      ],
+      "error": "skip model"
+    },
+    "audio_expectation_metrics": {
+      "enabled": false,
+      "model": "laion/clap-htsat-unfused",
+      "threshold": 0.1,
+      "expected": [
+        "instrument:piano",
+        "mood:hopeful",
+        "genre:lo-fi",
+        "theme:rain"
+      ],
+      "error": "skip model"
+    },
+    "audio_feature_metrics": {
+      "enabled": true,
+      "estimated_tempo": 113.64,
+      "selected_tempo": 90.0,
+      "rms": 0.070694,
+      "selected_energy": 4.0,
+      "onset_rate": 0.04301,
+      "brightness": 52.49,
+      "selected_complexity": "moderate",
+      "measured_energy_proxy": 0.566
+    }
+  },
+  "record_fields": {
+    "mood": null,
+    "theme": null,
+    "style": null,
+    "instruments": null,
+    "tempo": null,
+    "complexity": null,
+    "energy": null
+  }
+}
